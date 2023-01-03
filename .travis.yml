@@ -6,9 +6,10 @@ node_js:
 services:
   - docker
 before install:
-  - docker build -t wilson/sample-app -f Dockerfile.dev .
+  - docker build -t wilsonzhang911/sample-app -f Dockerfile.dev .
+  - docker push wilsonzhang911/sample-app
 script:
-  - docker run -e CI=true wilson/sample-app npm run test -- --coverage --watchAll=false
+  - docker run -e CI=true wilsonzhang911/sample-app npm run test -- --coverage --watchAll=false
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
