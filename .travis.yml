@@ -6,10 +6,12 @@ node_js:
 services:
   - docker
 before install:
-  - docker build -t wilsonzhang911/sample-app -f Dockerfile.dev .
-  - docker push wilsonzhang911/sample-app
+  - docker build -t wilson/sample-app -f Dockerfile.dev .
 script:
-  - docker run -e CI=true wilsonzhang911/sample-app npm run test -- --coverage --watchAll=false
+  - docker run -e CI=true wilson/sample-app npm run test -- --coverage --watchAll=false
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push wilson/sample-app
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
