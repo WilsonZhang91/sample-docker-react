@@ -1,6 +1,7 @@
 sudo: required
 language: node_js
-node_js: _ 16
+node_js:
+  - 16
 
 services:
   - docker
@@ -17,5 +18,5 @@ deploy:
   bucket_path: "EBApptest"
   on:
     branch: main
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key: "$AWS_SECRET_KEY"
+  access_key_id: '\$AWS_ACCESS_KEY'
+  secret_access_key: '\$AWS_SECRET_KEY'
