@@ -6,7 +6,7 @@ node_js:
 services:
   - docker
 before install:
-  - docker build -t wilson/sample-app -f Dockerfile.dev
+  - docker build -t wilson/sample-app -f Dockerfile.dev .
 script:
   - docker run -e CI=true wilson/sample-app npm run test -- --coverage --watchAll=false
 deploy:
@@ -18,5 +18,5 @@ deploy:
   bucket_path: "EBApptest"
   on:
     branch: main
-  access_key_id: '\$AWS_ACCESS_KEY'
-  secret_access_key: '\$AWS_SECRET_KEY'
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
