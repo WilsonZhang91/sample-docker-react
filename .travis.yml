@@ -12,14 +12,14 @@ script:
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push wilson/sample-app
-deploy:
-  provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "sample-docker-react"
-  env: "Sampledockerreact-env"
-  bucket_name: "elasticbeanstalk-us-east-1-011957927785"
-  bucket_path: "EBApptest"
-  on:
-    branch: main
-  access_key_id: "$AWS_ACCESS_KEY"
-  secret_access_key: "$AWS_SECRET_KEY"
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-east-1"
+#   app: "sample-docker-react"
+#   env: "Sampledockerreact-env"
+#   bucket_name: "elasticbeanstalk-us-east-1-011957927785"
+#   bucket_path: "EBApptest"
+#   on:
+#     branch: main
+#   access_key_id: "$AWS_ACCESS_KEY"
+#   secret_access_key: "$AWS_SECRET_KEY"
